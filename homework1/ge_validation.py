@@ -6,11 +6,13 @@ from great_expectations.data_context.types.base import (
 )
 from great_expectations.core.batch import RuntimeBatchRequest
 from slack_sdk.webhook import WebhookClient
+import os
 
 # ---------- AYARLAR ----------
 CSV_PATH = "data/Amazon_Sale_Report.csv"
 SLACK_WEBHOOK_URL = "https://hooks.slack.com/services/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"
-GE_ROOT_DIR = "C:/Users/HP/Desktop/Data_Quality_Monitoring_Project/great_expectations"
+GE_ROOT_DIR = os.path.join(os.getcwd(), "great_expectations")
+
 
 # ---------- CSV'Yİ OKU ----------
 df = pd.read_csv(CSV_PATH, low_memory=False)
