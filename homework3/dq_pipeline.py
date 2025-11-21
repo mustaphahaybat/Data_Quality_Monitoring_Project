@@ -61,7 +61,7 @@ def send_slack_message(text: str):
     )
 
 def main():
-    df = pd.read_csv("../data/Amazon_Sale_Report.csv")
+    df = pd.read_csv("data/Amazon_Sale_Report.csv")
 
     df = df.rename(
         columns={
@@ -90,8 +90,8 @@ def main():
     valid_df = pd.DataFrame(valid_rows)
     invalid_df = pd.DataFrame(invalid_rows)
 
-    valid_df.to_csv("../data/valid_rows.csv", index=False)
-    invalid_df.to_csv("../data/invalid_rows.csv", index=False)
+    valid_df.to_csv("data/valid_rows.csv", index=False)
+    invalid_df.to_csv("data/invalid_rows.csv", index=False)
 
     print(f"Validation Completed. Valid rows: {len(valid_rows)}, Invalid rows: {len(invalid_rows)}")
 
