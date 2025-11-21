@@ -28,14 +28,3 @@ jobs:
       - name: Run Data Validation Script
         run: |
           python homework3/dq_pipeline.py
-
-      - name: Slack Notification (Optional)
-        if: failure()
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        run: |
-          python - <<EOF
-          import requests, json, os
-          payload = {"text": "CI Failed: Data Validation failed."}
-          requests.post(os.environ["SLACK_WEBHOOK_URL"], data=json.dumps(payload), headers={"Content-Type": "application/json"})
-          EOF
