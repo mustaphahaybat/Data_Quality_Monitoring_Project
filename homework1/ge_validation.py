@@ -8,7 +8,7 @@ from great_expectations.core.batch import RuntimeBatchRequest
 from slack_sdk.webhook import WebhookClient
 
 # ---------- AYARLAR ----------
-CSV_PATH = "C:/Users/HP/Desktop/Data_Quality_Monitoring_Project/data/Amazon_Sale_Report.csv"
+CSV_PATH = "data/Amazon_Sale_Report.csv"
 SLACK_WEBHOOK_URL = "https://hooks.slack.com/services/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"
 GE_ROOT_DIR = "C:/Users/HP/Desktop/Data_Quality_Monitoring_Project/great_expectations"
 

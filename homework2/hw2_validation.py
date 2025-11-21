@@ -74,7 +74,7 @@ def send_slack_message(text: str):
 # Main Process
 # -----------------------------
 def main():
-    df = pd.read_csv("../data/Amazon_Sale_Report.csv")
+    df = pd.read_csv("data/Amazon_Sale_Report.csv")
 
     # ------- COLUMN RE-MAPPING -------
     df = df.rename(
