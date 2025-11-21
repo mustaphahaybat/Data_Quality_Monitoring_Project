@@ -1,0 +1,41 @@
+name: Data Quality Validation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  dq-validation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r homework3/requirements.txt
+
+      - name: Run Data Validation Script
+        run: |
+          python homework3/dq_pipeline.py
+
+      - name: Slack Notification (Optional)
+        if: failure()
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          python - <<EOF
+          import requests, json, os
+          payload = {"text": "CI Failed: Data Validation failed."}
+          requests.post(os.environ["SLACK_WEBHOOK_URL"], data=json.dumps(payload), headers={"Content-Type": "application/json"})
+          EOF
